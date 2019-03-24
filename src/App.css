@@ -1,33 +1,23 @@
-.App {
-  text-align: center;
+@font-face {
+    font-family: 'balsamiq_sansregular';
+    src: url('./fonts/balsamiqsansregular-webfont.woff2') format('woff2'),
+         url('./fonts/balsamiqsansregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+    font-family: 'balsamiq_sansbold';
+    src: url('./fonts/balsamiqsansbold-webfont.woff2') format('woff2'),
+         url('./fonts/balsamiqsansbold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.balsamiq-reg {
+    font-family: 'balsamiq_sansregular';
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.signup-form-t {
+    font-size: 22px;
 }

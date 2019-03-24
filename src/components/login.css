@@ -1,0 +1,19 @@
+.title {
+    font-size:42px;
+    font-weight:600;
+}
+
+.form-titles {
+    font-size: 26px;
+    font-weight:500;
+}
+
+.submit-button {
+    background-color: white;
+    border: 1.5px solid black;
+    box-shadow: 2px 2px black;
+}
+
+.theme-border {
+    border: 2.5px solid black!important;
+}

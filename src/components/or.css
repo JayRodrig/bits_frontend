@@ -1,0 +1,9 @@
+.box {
+    text-align:center;
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.centered {
+    justify-content:center;
+}

@@ -1,0 +1,9 @@
+.logo {
+    font-size: 46px;
+    margin-left: 1.5%;
+    font-weight: 600;
+}
+
+.row-line {
+    border-bottom: 2.5px solid black;
+}
