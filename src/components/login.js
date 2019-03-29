@@ -1,9 +1,6 @@
 // NPM MODULES
 import React from 'react';
 
-// LOCAL MODULES
-import firebase from '../firebase';
-
 // CSS FILES
 import './login.css';
 
@@ -17,6 +14,12 @@ export default props => {
         props.handleLogIn(e);
     }
 
+    const handleSubmitEnter = e => {
+        if (e.keyCode === 13) {
+            props.handleLogIn(e);
+        }
+    }
+
     return(
         <div className='container'>
             <div className='row' style={{justifyContent: 'center'}}>
@@ -27,11 +30,13 @@ export default props => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="email" className='balsamiq-reg form-titles'>EMAIL</label>
-                        <input type="text" name='email' className="form-control theme-border balsamiq-reg" id="usernameinput" onChange={handleInputs} />
+                        <input type="text" name='email' value={props.email} className="form-control theme-border balsamiq-reg" id="usernameinput" 
+                            onChange={handleInputs} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1" className='balsamiq-reg form-titles'>PASSWORD</label>
-                        <input type="password" name='password' className="form-control theme-border balsamiq-reg" id="passwordinput" onChange={handleInputs} />
+                        <input type="password" name='password' value={props.password} className="form-control theme-border balsamiq-reg" id="passwordinput" 
+                            onChange={handleInputs} onKeyDown={handleSubmitEnter} />
                     </div>
                     <button type="submit" className="mb-5 submit-button balsamiq-reg" onClick={handleSubmit}>SUBMIT</button>
                     </form>

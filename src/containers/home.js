@@ -33,27 +33,38 @@ export default class Home extends Component {
           })
           .catch(err => {
             const {message} = err;
-            console.log(message)
             this.setState({ 
                 err: message, 
             });
           })
     }
 
+    handleSignUp = e => {
+        this.props.history.push('/signup');
+    }
+
     render() {
+        const displayErr = this.state.err === '' ? '' 
+            :   <> 
+                    <div className='container'>
+                        <div className="alert alert-dark theme-border balsamiq-reg mt-3 text-uppercase font-weight-bold" role="alert">{this.state.err}</div>
+                    </div>
+                </>
+        
         return(
             <>
                 <AuthContext.Consumer>
                     {
                         user => {
-                            console.log(user)
                             if (!user.user) {
                                 return(
                                     <>
                                         <NavBar />
-                                        <LogIn handleInputs={this.handleInputs} handleLogIn={this.handleLogIn} />
+                                        {displayErr}
+                                        <LogIn handleInputs={this.handleInputs} handleLogIn={this.handleLogIn} 
+                                            email={this.state.email} password={this.state.password}/>
                                         <OR />     
-                                        <SignUpButton />
+                                        <SignUpButton handleSignUp={this.handleSignUp} />
                                     </>
                                 )
                             } else {

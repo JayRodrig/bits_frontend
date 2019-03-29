@@ -1,6 +1,6 @@
 // NPM MODULES
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 // LOCAL MODULES
 import AuthContext from '../contexts/auth_context';
@@ -37,7 +37,9 @@ export default props => {
                                 <>
                                     <div className='row row-line'>
                                         <div className='col col-1 balsamiq-reg logo nav-border'>BITS</div>
-                                        <div className='col col-1 balsamiq-reg nav-border font-weight-bold nav-title'><span>HOME</span></div>
+                                        <div className='col col-1 balsamiq-reg nav-border font-weight-bold nav-title'>
+                                            <Link to='/' className='nav-link'>HOME</Link>
+                                        </div>
                                         <div className='col col-1 balsamiq-reg nav-border font-weight-bold nav-title'><span>PROFILE</span></div>
                                         <div className='col col-1 balsamiq-reg nav-border font-weight-bold nav-title'><span>POST</span></div>
                                         <div className='col col-1 balsamiq-reg nav-border font-weight-bold nav-title'><span>NOTIFICATIONS</span></div>
