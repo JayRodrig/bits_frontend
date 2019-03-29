@@ -1,7 +1,22 @@
+// NPM MODULES
 import React from 'react';
+
+// LOCAL MODULES
+import firebase from '../firebase';
+
+// CSS FILES
 import './login.css';
 
 export default props => {
+    
+    const handleInputs = e => {
+        props.handleInputs(e);
+    }
+    
+    const handleSubmit = e => {
+        props.handleLogIn(e);
+    }
+
     return(
         <div className='container'>
             <div className='row' style={{justifyContent: 'center'}}>
@@ -11,14 +26,14 @@ export default props => {
                         <p className='balsamiq-reg title'>LOG IN</p>
                     </div>
                     <div className="form-group">
-                        <label for="UserName" className='balsamiq-reg form-titles'>USERNAME</label>
-                        <input type="text" className="form-control theme-border balsamiq-reg" id="usernameinput" />
+                        <label htmlFor="email" className='balsamiq-reg form-titles'>EMAIL</label>
+                        <input type="text" name='email' className="form-control theme-border balsamiq-reg" id="usernameinput" onChange={handleInputs} />
                     </div>
                     <div className="form-group">
-                        <label for="exampleInputPassword1" className='balsamiq-reg form-titles'>PASSWORD</label>
-                        <input type="password" className="form-control theme-border balsamiq-reg" id="passwordinput" />
+                        <label htmlFor="exampleInputPassword1" className='balsamiq-reg form-titles'>PASSWORD</label>
+                        <input type="password" name='password' className="form-control theme-border balsamiq-reg" id="passwordinput" onChange={handleInputs} />
                     </div>
-                    <button type="submit" className="mb-5 submit-button balsamiq-reg">SUBMIT</button>
+                    <button type="submit" className="mb-5 submit-button balsamiq-reg" onClick={handleSubmit}>SUBMIT</button>
                     </form>
                 </div>
             </div>

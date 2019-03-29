@@ -1,9 +1,49 @@
 .logo {
     font-size: 46px;
-    margin-left: 1.5%;
     font-weight: 600;
+    min-width: 120px;
+    margin-left:1.5%;
 }
 
 .row-line {
     border-bottom: 2.5px solid black;
+}
+
+.nav-border {
+    border-right: 2.5px solid black!important;
+}
+
+.nav-title {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.search-div {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(6 * 8.3333% - 1.5%);
+}
+
+.search-input {
+    width: 35%;
+    height: 50%;
+}
+
+.user-div {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    width: 50%;
+    height: auto;
+    padding-top: 50%;
+    border-radius:50%;
+    cursor: pointer;
 }

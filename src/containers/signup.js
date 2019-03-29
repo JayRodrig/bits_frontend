@@ -1,22 +1,25 @@
 import React, {Component} from 'react';
 import NavBar from '../components/navbar';
-import Firebase from '../firebase';
+import firebase from '../firebase';
 
-import Axios from 'axios';
+import axios from 'axios';
 
 export default class SignUp extends Component {
 
     state = {
         username: '',
+        firebase_uid: '',
+        avatar: '',
         email: '',
         password: '',
         first_name: '',
         last_name: '',
         rel_status: '',
         bio: '',
-        food: '',
+        foods: '',
         music: '',
         movies: '',
+        website_url: '',
         err: '',
     }
 
@@ -28,19 +31,42 @@ export default class SignUp extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        // const {username, first_name, last_name, rel_status, bio, food, music, movies} = this.state;
-        // Axios.post('http://bits-backend.herokuapp.com/user/', {
-
-        // })
-
-        const {email, password} = this.state;
-        Firebase.auth().createUserWithEmailAndPassword(email, password)
+        const file = e.target.form[6].files[0];
+        let firebase_uid = '';
+        const {username, password, first_name, last_name, email, bio, foods, music, movies, rel_status, website_url,} = this.state;        firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((response) => {
-            console.log('Returns: ', response);
+            firebase_uid = response.user.uid;
+            const root = firebase.storage().ref(`/images/${username}`);
+            const newImage = root.child(file.name)
+            return newImage.put(file);
+          })
+          .then(snapshot => {
+            return snapshot.ref.getDownloadURL();
+          })
+          .then(avatarURL => {
+            return axios.post('http://bits-backend.herokuapp.com/user/', {
+                username, 
+                firebase_uid,
+                avatar: avatarURL,
+                first_name, 
+                last_name,
+                email,
+                bio,
+                foods,
+                music,
+                movies,
+                rel_status,
+                website_url,
+            })              
+          })
+          .then(response => {
+              this.props.history.push('/');
           })
           .catch(err => {
-            const { message } = err;
-            this.setState({ error: message });
+            const {message} = err;
+            this.setState({
+                'msg': message,
+            });
           });
     }
 
@@ -106,7 +132,7 @@ export default class SignUp extends Component {
                                     </div>
                                     <div className="form-group col-md-6">
                                     <label htmlFor="inputPassword4" className='font-weight-bold signup-form-t'>FOOD:</label>
-                                    <input type="text" name='food' className="form-control theme-border" id="inputFood" onChange={this.handleChange}  />
+                                    <input type="text" name='foods' className="form-control theme-border" id="inputFood" onChange={this.handleChange}  />
                                     </div>
                                     <div className="form-group col-md-6">
                                     <label htmlFor="inputEmail4" className='font-weight-bold signup-form-t'>MUSIC:</label>
@@ -115,6 +141,10 @@ export default class SignUp extends Component {
                                     <div className="form-group col-md-6">
                                     <label htmlFor="inputPassword4" className='font-weight-bold signup-form-t'>MOVIES:</label>
                                     <input type="text" name='movies' className="form-control theme-border" id="inputMoviesName" onChange={this.handleChange}  />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                    <label htmlFor="websiteurlinput4" className='font-weight-bold signup-form-t'>WEBSITE URL:</label>
+                                    <input type="text" name='website_url' className="form-control theme-border" id="inputWebsiteURL" onChange={this.handleChange}  />
                                     </div>
                                 </div>
                                 <button type="submit" className="submit-button mb-3" onClick={this.handleSubmit}>SUBMIT</button>
