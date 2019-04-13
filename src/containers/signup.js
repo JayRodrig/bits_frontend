@@ -33,7 +33,8 @@ export default class SignUp extends Component {
         e.preventDefault();
         const file = e.target.form[6].files[0];
         let firebase_uid = '';
-        const {username, password, first_name, last_name, email, bio, foods, music, movies, rel_status, website_url,} = this.state;        firebase.auth().createUserWithEmailAndPassword(email, password)
+        const {username, password, first_name, last_name, email, bio, foods, music, movies, rel_status, website_url,} = this.state;        
+        firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((response) => {
             firebase_uid = response.user.uid;
             const root = firebase.storage().ref(`/images/${username}`);
@@ -74,7 +75,7 @@ export default class SignUp extends Component {
         return(
             <>
                 <NavBar />
-                <div className='container'>
+                <div className='container no-backg'>
                     <div className='row mt-5'>
                         <div className='col col-12 theme-border p-5 balsamiq-reg'>
                             <div className='row mb-5'>
@@ -118,7 +119,7 @@ export default class SignUp extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="avatar" style={{display: 'block'}} className='font-weight-bold signup-form-t'>Choose a profile picture:</label>
-                                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg, image/jpg" />
                                 </div>
                                 <div className='row mt-4 mb-1'>
                                         <div className='col col-4'>
@@ -127,7 +128,7 @@ export default class SignUp extends Component {
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group col-md-6">
-                                    <label htmlFor="inputEmail4" className='font-weight-bold signup-form-t'>BIO:</label>
+                                    <label htmlFor="bio" className='font-weight-bold signup-form-t'>BIO:</label>
                                     <input type="text" name='bio' className="form-control theme-border" id="inputBio" onChange={this.handleChange} />
                                     </div>
                                     <div className="form-group col-md-6">

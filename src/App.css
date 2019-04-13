@@ -14,10 +14,85 @@
     font-style: normal;
 }
 
+body {
+    background-image: linear-gradient(90deg, white 18.18%, #d4d8db 18.18%, #d4d8db 50%, white 50%, white 68.18%, #d4d8db 68.18%, #d4d8db 100%);
+    background-size: 110.00px 110.00px;
+}
+
 .balsamiq-reg {
     font-family: 'balsamiq_sansregular';
 }
 
+.balsamiq-bold {
+    font-family: 'balsamiq_sansbold';
+}
+
 .signup-form-t {
     font-size: 22px;
+}
+
+.home-box {
+    max-width: 100%;
+}
+
+.post-container {
+    width: 65%!important;
+}
+
+.postpage-container {
+    width: 80%!important;
+}
+
+.user-pic {
+    border-radius: 50%;
+    width:50px;
+    height:50px;
+    background-size: cover;
+}
+
+.all-comments-button {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.loading-font {
+    font-size: 46px;
+    letter-spacing: 2vh;
+}
+
+.border-r {
+    border-right: 2.5px solid black!important;
+}
+
+.post-button {
+    cursor: pointer;
+}
+
+.user-pic-prof {
+    border-radius: 50%;
+    width:20vh;
+    height:20vh;
+}
+
+.vertically-al {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-profile-comments {
+    border-left: 2.5px solid black;
+}
+
+.search-user-pic {
+    border-radius: 50%;
+    min-width:50px;
+    max-width:50px;
+    min-height:185px;
+    max-height:185px;
+    background-size: cover;
 }

@@ -1,8 +1,12 @@
+.no-backg {
+    background-image: none!important;
+    background-color: white;
+}
+
 .logo {
-    font-size: 46px;
+    font-size: 2.5vw;
     font-weight: 600;
     min-width: 120px;
-    margin-left:1.5%;
 }
 
 .row-line {
@@ -18,7 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 120px;
+    font-size: 1vw;
 }
 
 .nav-link {
@@ -31,7 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    width: calc(6 * 8.3333% - 1.5%);
+    width: calc(7 * 8.3333% - 12.5px);
 }
 
 .search-input {

@@ -12,6 +12,7 @@
     background-color: white;
     border: 1.5px solid black;
     box-shadow: 2px 2px black;
+    cursor: pointer;
 }
 
 .theme-border {
