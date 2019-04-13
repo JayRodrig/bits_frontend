@@ -28,6 +28,7 @@ export default class Home extends Component {
         newPost: false,
         searchQuery: '',
         noPosts: false,
+        allUsers: null,
     }
 
     static contextType = AuthContext;
@@ -76,11 +77,14 @@ export default class Home extends Component {
                         loadingPosts: !state.loadingPosts,
                     }));
                 } else {
+                    const allUsersCall = await axios.get(`http://bits-backend.herokuapp.com/user/`);
+                    const {data,} = allUsersCall.data;
                     this.setState((state) => ({
                         user: userObj.data,
                         followingUsers: data,
                         loadingPosts: false,
                         noPosts: true,
+                        allUsers: data,
                     }));
                 }
 
@@ -193,11 +197,32 @@ export default class Home extends Component {
                                             </div>
                                         </div>
                                         
-                                        <div className='container mt-5'>
+                                        <div className='container'>
                                             <div className='row'>
                                                 <div className='col col-12 balsamiq-bold text-center all-comments-button' style={{minHeight: '25vh', minWidth: '25vh'}}>
-                                                    <h1>No Posts Yet</h1>       
+                                                    <h1 style={{display: 'inline-block'}}>No Posts Yet</h1>              
                                                 </div>
+                                            </div>
+                                            <div className='row'>
+                                                <div className='col-12 text-center balsamiq-bold'>
+                                                    <h3 style={{display: 'inline-block'}}>Some Users To Follow:</h3>
+                                                </div>
+                                                {
+                                                    this.state.allUsers.map((e, i) => {
+                                                        return(
+                                                            <div className='col-12 theme-border mb-5 no-backg' key={i}>
+                                                                <div className='row p-1'>
+                                                                    <img className='col-2 search-user-pic theme-border ml-2 mt-1' alt='avatar' src={e.avatar} />
+                                                                    <div className='col-2'> 
+                                                                        <span className='balsamiq-bold' style={{fontSize: 18, display:'inline-block', cursor: 'pointer'}}
+                                                                            onClick={this.handleUserClick}>{e.username}</span>
+                                                                        <span className='balsamiq-reg' style={{fontSize: 18, display:'inline-block'}}>{e.first_name} {e.last_name}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
                                             </div>
                                         </div>
                                     </>
