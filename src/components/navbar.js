@@ -1,6 +1,6 @@
 // NPM MODULES
 import React from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link,} from 'react-router-dom';
 
 // LOCAL MODULES
 import AuthContext from '../contexts/auth_context';

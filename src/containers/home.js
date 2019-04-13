@@ -27,6 +27,7 @@ export default class Home extends Component {
         loadingPosts: true,
         newPost: false,
         searchQuery: '',
+        noPosts: false,
     }
 
     static contextType = AuthContext;
@@ -79,6 +80,7 @@ export default class Home extends Component {
                         user: userObj.data,
                         followingUsers: data,
                         loadingPosts: false,
+                        noPosts: true,
                     }));
                 }
 
@@ -178,7 +180,29 @@ export default class Home extends Component {
                                         </div>
                                     </>
                                 )
-                            } else if (user.user && !this.state.loadingPosts) {
+                            } else if (user.user && !this.state.loadingPosts && this.state.noPosts) {
+                                return(
+                                    <>
+                                        {this.renderNewPost()}
+                                        <NavBar showProfile={this.showProfile} user={this.state.user} submitSearch={this.submitSearch} historyObj={this.props.history} />
+                                        <div className='container'>
+                                            <div className='row mt-5' style={{justifyContent: 'flex-end'}}>
+                                                <div className='col col-2 vertically-al theme-border balsamiq-bold text-center submit-button'>
+                                                    <span className='p-2' onClick={this.toggleNewPost}>NEW POST</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className='container mt-5'>
+                                            <div className='row'>
+                                                <div className='col col-12 balsamiq-bold text-center all-comments-button' style={{minHeight: '25vh', minWidth: '25vh'}}>
+                                                    <h1>No Posts Yet</h1>       
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                )
+                            } else {
                                 return(
                                     <>
                                         {this.renderNewPost()}
@@ -200,28 +224,6 @@ export default class Home extends Component {
                                                         <span name='prev' className='border-r pr-5 post-button' onClick={this.changePost}>Prev Post</span>  
                                                         <span name='next' className='post-button ml-5' onClick={this.changePost}>Next Post</span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </>
-                                )
-                            } else if (user.user && !this.state.loadingPosts && this.state.followingPosts.length === 0) {
-                                return(
-                                    <>
-                                        {this.renderNewPost()}
-                                        <NavBar showProfile={this.showProfile} user={this.state.user} submitSearch={this.submitSearch} historyObj={this.props.history} />
-                                        <div className='container'>
-                                            <div className='row mt-5' style={{justifyContent: 'flex-end'}}>
-                                                <div className='col col-2 vertically-al theme-border balsamiq-bold text-center submit-button'>
-                                                    <span className='p-2' onClick={this.toggleNewPost}>NEW POST</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className='container mt-5'>
-                                            <div className='row'>
-                                                <div className='col col-12 balsamiq-bold text-center all-comments-button' style={{minHeight: '25vh', minWidth: '25vh'}}>
-                                                    <h1>No Posts Yet</h1>       
                                                 </div>
                                             </div>
                                         </div>
