@@ -146,6 +146,8 @@ export default class Home extends Component {
 
     submitSearch = searchQuery => this.props.history.push(`/searchpage/${searchQuery}`);
 
+    handleUserClick = e => this.showProfile(e.target.innerText);
+
     renderNewPost = () => {
         if (this.state.newPost) {
             return(
